@@ -5,7 +5,7 @@ class UserController {
   async getUserById(req: Request, res: Response) {
     const userId = req.params.id;
     try {
-      return await UserModel.find({ _id: userId }).exec();
+      res.status(200).json(await UserModel.find({ _id: userId }).exec());
     } catch(err: any) {
       console.error('Not found', err);
       res.status(500).json({ message: 'Not found' });
