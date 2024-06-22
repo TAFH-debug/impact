@@ -2,6 +2,7 @@ export interface User {
     email: string;
     username: string;
     password: string;
-    city: string;
+    name: string;
+    surname: string;
 }
   

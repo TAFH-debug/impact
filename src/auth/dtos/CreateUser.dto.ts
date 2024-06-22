@@ -2,6 +2,6 @@ export interface CreateUserDto {
     username?: string;
     email: string;
     password: string;
-    city: string;
+    name: string;
+    surname: string;
 }
-  
