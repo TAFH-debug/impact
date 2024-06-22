@@ -12,10 +12,10 @@ class AdminController {
   }
 
   async changeUserRole(req: Request, res: Response): Promise<void> {
-    const { userId, role } = req.body;
+    const { id, role } = req.body;
 
     try {
-      const updatedUser = await adminService.changeUserRole(userId, role);
+      const updatedUser = await adminService.changeUserRole(id, role);
 
       if (!updatedUser) {
         res.status(404).json({ message: 'User not found' });
