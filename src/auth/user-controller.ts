@@ -14,7 +14,7 @@ class UserController {
       if (surname) updatedFields.surname = surname;
       if (image) updatedFields.image = image;
   
-      const userId = req.user?.id;
+      const userId = (req as any).user?.id;
       const updatedUser = await UserModel.findByIdAndUpdate(userId, updatedFields, { new: true });
 
       if (!updatedUser) {
