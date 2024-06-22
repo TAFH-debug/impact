@@ -7,6 +7,6 @@ const adminRouter = Router();
 adminRouter.use(adminMiddleware);
 
 adminRouter.post('/user/role', adminController.changeUserRole);
-adminRouter.get('/user', adminController.getAllUsers);
+adminRouter.get('/user/all', adminController.getAllUsers);
 
 export default adminRouter;
