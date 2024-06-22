@@ -2,6 +2,15 @@ import { Request, Response } from 'express';
 import UserModel, { IUser } from './models/User';
 
 class UserController {
+  async getMentors(req: Request, res: Response) {
+    try {
+      res.status(200).json(await UserModel.find({ role: 'mentor' }).exec());
+    } catch(err: any) {
+      console.error('Not found', err);
+      res.status(500).json({ message: 'Not found' });
+    }
+  }
+
   async getUserById(req: Request, res: Response) {
     const userId = req.params.id;
     try {

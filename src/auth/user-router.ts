@@ -7,4 +7,5 @@ const userController = new UserController();
 
 userRouter.put('/user/update', authMiddleware, userController.updateSettings);
 userRouter.get("/user/:id", userController.getUserById);
+userRouter.get("/user/mentors", userController.getMentors);
 export default userRouter;
