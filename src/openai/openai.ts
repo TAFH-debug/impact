@@ -1,7 +1,6 @@
 import {Express, Request, Response} from "express";
 import OpenAI from "openai";
 
-
 const openai = new OpenAI();
 
 export function registerChat(app: Express) {
@@ -9,16 +8,13 @@ export function registerChat(app: Express) {
 }
 
 async function gpt(req: Request, res: Response): Promise<void> {
-    const { text } = req.body;
+    const { messages } = req.body;
 
     const completion = await openai.chat.completions.create({
         messages: [{
             role: "system",
             content: "You are a helpful assistant.",
-        }, {
-            role: "user",
-            content: text,
-        }],
+        }, ...messages],
         model: "gpt-3.5-turbo"
     });
 
