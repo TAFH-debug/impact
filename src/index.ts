@@ -5,11 +5,13 @@ import cors from 'cors';
 import {registerChat} from './openai/openai';
 import authRouter from "./auth/auth-router";
 import coursesRouter from "./courses/course-router";
+import adminRouter from "./admin/admin-router";
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use(adminRouter);
 app.use("/", authRouter);
 app.use("/courses", coursesRouter);
 
