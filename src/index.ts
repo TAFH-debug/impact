@@ -13,7 +13,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(fileUpload({}));
-app.use(express.static("public"));
+app.use("/files", express.static("public"));
 
 app.post('/upload', function(req, res) {
   const req2 = (req as any);
