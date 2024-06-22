@@ -12,14 +12,15 @@ class CourseService {
   }
 
   async createCourse(createCourseDto: CreateCourseDto): Promise<ICourse> {
-    const { name, photo, text, video, isPrivate} = createCourseDto;
+    const { name, photo, text, video, isPrivate, descr} = createCourseDto;
 
     const newCourse = new CourseModel({
       name,
       photo,
       text,
       video,
-      isPrivate
+      isPrivate,
+      descr
     });
 
     await newCourse.save();
