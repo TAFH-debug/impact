@@ -4,9 +4,7 @@ import adminController from './admin-controller';
 
 const adminRouter = Router();
 
-adminRouter.use(adminMiddleware);
-
-adminRouter.post('/user/role', adminController.changeUserRole);
-adminRouter.get('/user/all', adminController.getAllUsers);
+adminRouter.post('/user/role', adminMiddleware, adminController.changeUserRole);
+adminRouter.get('/user/all', adminMiddleware, adminController.getAllUsers);
 
 export default adminRouter;

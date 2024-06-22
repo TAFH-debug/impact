@@ -2,7 +2,7 @@ import "dotenv/config";
 import express from "express";
 import connectDB from "./db";
 import cors from 'cors';
-import {registerChat} from './openai/openai';
+import {gpt} from './openai/openai';
 import authRouter from "./auth/auth-router";
 import coursesRouter from "./courses/course-router";
 import adminRouter from "./admin/admin-router";
@@ -12,12 +12,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.post("/gpt", gpt);
 app.use(adminRouter);
 app.use(userRouter);
 app.use("/", authRouter);
 app.use("/courses", coursesRouter);
 
-registerChat(app);
 connectDB();
 
 
