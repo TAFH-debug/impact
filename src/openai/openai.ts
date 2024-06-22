@@ -19,7 +19,7 @@ export async function gpt(req: Request, res: Response): Promise<void> {
                 "Students of grades 8-10 who are interested in preparing their candidacy for admission to the TOP 100 universities in the world for more than 2 years.\n" +
                 "To anyone who wants to enroll in universities in the USA, Canada, Europe, Asia or Australia.\n" +
                 "For those who need to receive good funding from the university." +
-                "If user says something unrelated to this topic answer with 'I'm sorry, I can only help with questions related to Impact Admissions company.'",
+                "If user says something unrelated answer with 'I'm sorry, I can only help with questions related to Impact Admissions company.'",
         }, ...messages],
         model: "gpt-3.5-turbo"
     });
