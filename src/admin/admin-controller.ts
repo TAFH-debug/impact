@@ -2,6 +2,15 @@ import { Request, Response } from 'express';
 import adminService from './admin-service';
 
 class AdminController {
+  async check(req: Request, res: Response): Promise<void> {
+    try {
+      res.status(200).json({ result: "Ok" });
+    } catch (error) {
+      console.error('Failed to login admin:', error);
+      res.status(500).json({ message: 'Failed to login admin' });
+    }
+  }
+
   async changeUserRole(req: Request, res: Response): Promise<void> {
     const { userId, role } = req.body;
 
