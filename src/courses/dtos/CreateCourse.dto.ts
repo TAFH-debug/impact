@@ -5,6 +5,5 @@ export interface CreateCourseDto {
     video: string;
     isPrivate: boolean;
     descr: string;
-    users: string[];
-  }
+}
   

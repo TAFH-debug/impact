@@ -7,7 +7,7 @@ export interface ICourse extends Document {
   video: string;
   isPrivate: boolean;
   descr: string;
-  users: mongoose.Schema.Types.ObjectId[];
+  users: string[];
 }
 
 const CourseSchema: Schema = new Schema({
@@ -17,7 +17,7 @@ const CourseSchema: Schema = new Schema({
   video: { type: String, required: true },
   descr: {type: String, required: true},
   isPrivate: { type: Boolean, required: true },
-  users: [{ type: Schema.Types.ObjectId, required: true }]
+  users: [{ type: Schema.Types.ObjectId, ref: "User" }]
 });
 
 export default mongoose.model<ICourse>('Course', CourseSchema);

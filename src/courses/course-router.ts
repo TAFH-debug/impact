@@ -9,5 +9,6 @@ const courseController = new CourseController(courseService);
 
 courseRouter.post('/create', courseController.createCourse);
 courseRouter.get('/', courseController.getCourses);
+courseRouter.get('/:id', courseController.getCourseById);
 
 export default courseRouter;

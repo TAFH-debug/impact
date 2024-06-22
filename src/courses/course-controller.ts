@@ -9,6 +9,16 @@ class CourseController {
     this.courseService = courseService;
   }
 
+  getCourseById = async (req: Request, res: Response): Promise<void> => {
+    try {
+      const { id } = req.params;
+      const course = await this.courseService.getCourseById(id);
+      res.status(200).json(course);
+    } catch (err) {
+      res.status(500).json({ message: (err as any).message });
+    }
+  }
+
   createCourse = async (req: Request, res: Response): Promise<void> => {
     try {
       const createCourseDto: CreateCourseDto = req.body;
