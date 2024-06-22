@@ -1,4 +1,4 @@
-import {Express, Request, Response} from "express";
+import {Request, Response} from "express";
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -24,5 +24,5 @@ export async function gpt(req: Request, res: Response): Promise<void> {
         model: "gpt-3.5-turbo"
     });
 
-    res.json({ response: completion.choices[0] });
+    res.json({ response: completion.choices[0].message.content });
 }

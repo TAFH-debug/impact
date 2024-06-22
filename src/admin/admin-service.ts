@@ -1,10 +1,9 @@
-import UserModel, { IUser } from '../auth/models/User';
+import UserModel, {IUser} from '../auth/models/User';
 
 class AdminService {
   async changeUserRole(userId: string, role: string): Promise<IUser | null> {
     try {
-      const user = await UserModel.findByIdAndUpdate(userId, { role }, { new: true });
-      return user;
+      return await UserModel.findByIdAndUpdate(userId, {role}, {new: true}).exec();
     } catch (error) {
       console.error('Failed to update user role:', error);
       throw error;
@@ -13,8 +12,7 @@ class AdminService {
 
   async getAllUsers(): Promise<IUser[]> {
     try {
-      const users = await UserModel.find();
-      return users;
+      return await UserModel.find().exec();
     } catch (error) {
       console.error('Failed to fetch users:', error);
       throw error;
