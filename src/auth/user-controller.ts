@@ -22,7 +22,7 @@ class UserController {
   }
 
   async updateSettings(req: Request, res: Response): Promise<void> {
-    const { email, password, name, surname, image } = req.body;
+    const { email, password, name, surname, image, descr } = req.body;
 
     try {
       const updatedFields: Partial<IUser> = {};
@@ -32,6 +32,7 @@ class UserController {
       if (name) updatedFields.name = name;
       if (surname) updatedFields.surname = surname;
       if (image) updatedFields.image = image;
+      if (descr) updatedFields.descr = descr;
   
       const userId = (req as any).user?.id;
       const updatedUser = await UserModel.findByIdAndUpdate(userId, updatedFields, { new: true });

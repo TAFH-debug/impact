@@ -8,7 +8,7 @@ export interface IUser extends Document {
   role: string;
   calendly_link?: string;
   image: string;
-  description: string;
+  descr: string;
 }
 
 const UserSchema: Schema = new Schema({
@@ -19,7 +19,7 @@ const UserSchema: Schema = new Schema({
   role: { type: String, required: true, default: "user" },
   calendly_link: { type: String, required: false },
   image: { type: String, required: true, default: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" },
-  description: { type: String, required: true, default: "No description" }
+  descr: { type: String, required: true, default: "No description" }
 });
 
 export default mongoose.model<IUser>('User', UserSchema);
