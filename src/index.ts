@@ -6,6 +6,7 @@ import {registerChat} from './openai/openai';
 
 const app = express();
 app.use(cors());
+app.use(express.json());
 
 registerChat(app);
 connectDB();
