@@ -2,6 +2,11 @@ import { CreateCourseDto } from './dtos/CreateCourse.dto';
 import CourseModel, { ICourse } from './models/Course';
 
 class CourseService {
+
+  async getMyCourses(userId: string) {
+    return await CourseModel.find({ users: userId }).populate('users', '-password').exec();
+  }
+
   async getCourseById(id: string) {
     return await CourseModel.find({ _id: id }).populate('users', '-password').exec();
   }

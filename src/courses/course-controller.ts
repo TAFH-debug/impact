@@ -9,6 +9,19 @@ class CourseController {
     this.courseService = courseService;
   }
 
+  getMyCourses = async (req: Request, res: Response): Promise<void> => {
+    try {
+      if (req.user === undefined) {
+        res.status(500).json({ message: 'No user found.' });
+        return;
+      }
+      const courses = await this.courseService.getMyCourses((req as any).user.id);
+      res.status(200).json(courses);
+    } catch (err) {
+      res.status(500).json({ message: (err as any).message });
+    }
+  }
+
   getCourseById = async (req: Request, res: Response): Promise<void> => {
     try {
       const { id } = req.params;
