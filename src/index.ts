@@ -13,11 +13,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(fileUpload({}));
-app.use("/files", express.static("public"));
+app.use("/files", express.static("../public"));
 
 app.post('/upload', function(req, res) {
   const req2 = (req as any);
-  req2.files.file.mv('public/' + req2.files.file.name);
+  req2.files.file.mv('../public/' + req2.files.file.name, function(err: any) {
+    console.log("Error loading file" + err.message);
+  });
   res.status(200).json({ url: req2.files.file.name });
 });
 
