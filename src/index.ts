@@ -17,7 +17,7 @@ app.use("/files", express.static("public"));
 
 app.post('/upload', function(req, res) {
   const req2 = (req as any);
-  req2.files.photo.mv('public/' + req2.files.photo.name);
+  req2.files.file.mv('public/' + req2.files.photo.name);
   res.status(200).json({ url: req2.files.photo.name });
 });
 

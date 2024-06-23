@@ -12,5 +12,6 @@ courseRouter.post('/create', courseController.createCourse);
 courseRouter.get('/', courseController.getCourses);
 courseRouter.get('/my', authMiddleware, courseController.getMyCourses);
 courseRouter.get('/:id', courseController.getCourseById);
+courseRouter.get("/delete/:id", authMiddleware, courseController.deleteCourse);
 
 export default courseRouter;

@@ -9,6 +9,16 @@ class CourseController {
     this.courseService = courseService;
   }
 
+  deleteCourse = async (req: Request, res: Response): Promise<void> => {
+    try {
+      const { id } = req.params;
+      await this.courseService.deleteCourse(id);
+      res.status(200).json({ message: 'Course deleted' });
+    } catch (err) {
+      res.status(500).json({ message: (err as any).message });
+    }
+  }
+
   getMyCourses = async (req: Request, res: Response): Promise<void> => {
     try {
       if (req.user === undefined) {

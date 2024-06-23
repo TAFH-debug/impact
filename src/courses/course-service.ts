@@ -3,6 +3,10 @@ import CourseModel, { ICourse } from './models/Course';
 
 class CourseService {
 
+  async deleteCourse(id: string) {
+    return await CourseModel.findByIdAndDelete(id).exec();
+  }
+
   async getMyCourses(userId: string) {
     return await CourseModel.find({ users: userId }).populate('users', '-password').exec();
   }
