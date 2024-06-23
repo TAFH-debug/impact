@@ -35,7 +35,7 @@ class UserController {
       if (descr) updatedFields.descr = descr;
   
       const userId = (req as any).user?.id;
-      const updatedUser = await UserModel.findByIdAndUpdate(userId, updatedFields, { new: true });
+      const updatedUser = await UserModel.findByIdAndUpdate(userId, updatedFields, { new: true }).exec();
 
       if (!updatedUser) {
         res.status(404).json({ message: 'User not found' });
