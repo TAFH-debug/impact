@@ -33,5 +33,6 @@ app.post
 connectDB();
 
 
-app.lis  console.log("server running at http://localhost:3000");
+app.listen(process.env.PORT, () => {
+  console.log("server running at http://localhost:3000");
 });
